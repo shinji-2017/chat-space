@@ -1,16 +1,19 @@
 
-.contents
-  .header 
+.flash-box
+.header 
   %p.header__text
     グループを作成しました
+.contents
   .chat-side
     .side-header
       .side-header__box
         %p.side-header__box__user-name
           user-name
         %ul.side-header__box__menu
-          = fa_icon 'edit'
-          = fa_icon 'cog'
+          %li.side-header__box__menu__group
+            = fa_icon 'edit'
+          %li.side-header__box__menu__edit
+            = fa_icon 'cog'
     .groups
       .group
         %p.group__name
@@ -51,3 +54,4 @@
             = fa_icon "image"
             %input.input__box__image__file{ type:"file", id: "message_image"}
         %input.new__message__btn{type: "submit", value: "Send"}
+        
