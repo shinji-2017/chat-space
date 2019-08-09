@@ -47,4 +47,4 @@
 - belongs_to :message
 - belongs_to :user
 
-## how to use GitHub Desktop
+
