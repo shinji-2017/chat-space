@@ -5,6 +5,7 @@
 @mixin user__info-date {
   font-size: 12px;
   color: #999999;
+  margin-left: 10px;
 }
 
 @mixin user__info-name {
@@ -18,8 +19,6 @@
   color: #434a54;
 }
 
-<<<<<<< Updated upstream
-=======
 .flash-box {
   color: white;
   font-size: 1rem;
@@ -27,7 +26,6 @@
   text-align: center;
   width: 100vw;
 }
->>>>>>> Stashed changes
 .contents {
     .header {
       &__text {
@@ -43,6 +41,10 @@
     width: 300px;
     float: left;
     color: $white;
+    a, a:hover, a:visited {
+      color: white;
+      text-decoration: none;
+    }
     .side-header {
       height: 100px;
       background: #253141;
@@ -55,18 +57,26 @@
         font-weight: bold;
         display: flex;
         justify-content: space-between;
+        &__menu {
+          display: flex;
+          &__edit {
+            margin-right: 3px; 
+          }
+          &__group {
+            margin-right: 3px;
+          }
+        }
       }
     }
     .groups {
       height: calc(100vh - 140px);
       background: #2f3e51;
       padding: 20px 20px 0;
-<<<<<<< Updated upstream
-=======
       height: calc(100vh - 100px);
       box-sizing: border-box;
       overflow: scroll;
->>>>>>> Stashed changes
+      color: white;
+      text-decoration: none;
       .group {
         padding-bottom: 40px;
         &__name {
@@ -109,25 +119,20 @@
         line-height: 40px;
         border: solid 1px blue;
         color: blue;
-<<<<<<< Updated upstream
-      }
-    }
-    .messages {
-      padding: 46px 40px;
-      height: calc(100vh - 303px);
-=======
         line-height: 40px;
         text-decoration: none;
       }
     }
     .messages {
       height: calc(100vh - 100px - 90px);
->>>>>>> Stashed changes
       background: #fafafa;
+      overflow: scroll;
+      padding: 46px 40px;
       .message {
         padding-bottom: 40px;
         &__user__info {
           display: flex;
+          padding-bottom: 10px;
           &__name {
             @include user__info-name;
           }
@@ -139,28 +144,6 @@
           @include user__info-text;
         }
       }
-<<<<<<< Updated upstream
-      .message-second {
-        &__user__info {
-          display: flex;
-          &__name {
-            @include user__info-name;
-          }
-          &__date {
-            @include user__info-date;
-          }
-        }
-        &__text {
-          @include user__info-text;
-        }
-      }
-    }
-    .form {
-      height: 90px;
-      background: gray;
-      padding: 0 40px;
-      .new__message {
-=======
     }
     .form {
       height: 90px;
@@ -168,9 +151,7 @@
       box-sizing: border-box;
       padding: 20px 40px;
       .new_message {
->>>>>>> Stashed changes
         display: flex;
-        padding-top: 20px;
         .input__box {
           background: white;
           position: relative;

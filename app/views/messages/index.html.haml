@@ -1,34 +1,22 @@
 
-<<<<<<< Updated upstream
-.contents
-  .header 
-  %p.header__text
-    グループを作成しました
-=======
 .flash-box
 .contents
->>>>>>> Stashed changes
   .chat-side
     .side-header
       .side-header__box
         %p.side-header__box__user-name
           =current_user.name
         %ul.side-header__box__menu
-<<<<<<< Updated upstream
-          = fa_icon 'edit'
-          = fa_icon 'cog'
-=======
           %li.side-header__box__menu__group
             = link_to new_group_path do
               = fa_icon 'edit', class: "btn"
           %li.side-header__box__menu__edit
             = link_to edit_user_path(current_user) do
               = fa_icon 'cog', class: "btn"
->>>>>>> Stashed changes
     .groups
       - current_user.groups.each do |group|
         .group
-          = link_to group_messages_path(group) do
+          = link_to group_messages_path(group) do 
             .group__name
               = group.name
             .group__message
@@ -48,16 +36,8 @@
     .form 
       = form_for [@group, @message] do |f|
         .input__box
-<<<<<<< Updated upstream
-          %input.input__box__text{type: "text", placeholder: "type a message", id: "message_content"}
-          %label.input__box__image{for: "message_image"}
-            = fa_icon "image"
-            %input.input__box__image__file{ type:"file", id: "message_image"}
-        %input.new__message__btn{type: "submit", value: "Send"}
-=======
           = f.text_field :content, class: 'input__box__text', placeholder: 'type a message'
           = f.label :image, class: 'input__box__image' do
             = fa_icon 'picture-o', class: 'icon'
             = f.file_field :image, class: 'input__box__image__file'
         = f.submit 'Send', class: 'new_message__btn'
->>>>>>> Stashed changes
