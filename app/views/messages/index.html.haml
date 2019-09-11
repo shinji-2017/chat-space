@@ -30,7 +30,7 @@
           member : 
           - @group.users.each do |user|
             = user.name
-      = link_to "edit", edit_group_path(current_user), class: "main-header__edit"  
+      = link_to "edit", edit_group_path(@group), class: "main-header__edit"  
     .messages
       = render @messages
     .form 
