@@ -56,7 +56,6 @@ $(function(){
       data: {id: last_message_id}
     })
     .done(function(messages) {
-      console.log(messages)
       messages.forEach(function(message){
         buildHTML(message);
         let html = buildHTML(message);
@@ -65,7 +64,7 @@ $(function(){
       });
     })
     .fail(function() {
-      console.log('error');
+      alert('error');
     });
   };
   if(location.pathname.match(/messages/)){
