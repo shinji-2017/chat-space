@@ -1,17 +1,12 @@
 $(function(){
   function buildHTML(message){
 
-    if (message.image.url == null){
-      var img = "";
-    }else
-    {
-      var img = `<img class="lower-message__image" src="${message.image.url}">`;
-    }
+    let addImage = (message.image.url !== null)? `<img src="${message.image.url}" class="lower-message__image" >` : "";
     var html = `
-    <div class="message">
+    <div class="message" data-id="${message.id}">
     <div class="message__user__info">
     <div class="message__user__info__name">
-        ${message.name}
+        ${message.user_name}
     </div>
     <div class="message__user__info__date">
       ${message.created_at}
@@ -21,11 +16,12 @@ $(function(){
     <p class="lower-message__content">
     ${message.content}
     </p>
-    ${img}
+    ${addImage}
     </div>
     </div>`
     return html;
   }
+
   $("#new_message").on("submit", function(e){
     e.preventDefault();
     var formData = new FormData(this);
@@ -41,7 +37,7 @@ $(function(){
     .done(function(message){
       let html = buildHTML(message);
       $(".messages").append(html);
-      $(".messages").animate({scrollTop:$(".messages")[0].scrollHeight}, 1500);
+      $(".messages").animate({scrollTop:$(".messages")[0].scrollHeight}, 500);
       $(".input__box__text").val();
     })
     .fail(function(){
@@ -51,4 +47,31 @@ $(function(){
       $(".new_message__btn").removeAttr("disabled");
     });
   });
+  var reloadMessages = function() {
+    var last_message_id = $(".message:last").data('id');
+    $.ajax({
+      url: "api/messages",
+      type: 'get',
+      dataType: 'json',
+      data: {id: last_message_id}
+    })
+    .done(function(messages) {
+      console.log(messages)
+      messages.forEach(function(message){
+        buildHTML(message);
+        let html = buildHTML(message);
+        $(".messages").append(html);
+        $(".messages").animate({scrollTop:$(".messages")[0].scrollHeight}, 500);
+      });
+    })
+    .fail(function() {
+      console.log('error');
+    });
+  };
+  if(location.pathname.match(/messages/)){
+    setInterval(reloadMessages, 5000);
+  }
 });
+
+
+
